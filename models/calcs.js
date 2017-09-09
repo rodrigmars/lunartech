@@ -1,18 +1,18 @@
-  function CalculaVelocidade(valor) {
+  function TotalVelocidade(valor) {
     return null;
   }
 
-  function InformaTotalHorasRealizadas() {
+  function TotalHoras() {
     return (150)
   }
 
-  function VerificaAcesso(profile) {
+  function Acesso(profile) {
 
     return (profile.coordenadas == "A1521324") ? true : false;
   }
 
-  exports.calculaVelocidade = CalculaVelocidade;
-
-  exports.informaTotalHorasRealizadas = InformaTotalHorasRealizadas;
-
-  exports.verificaAcesso = VerificaAcesso;
+  module.exports = {
+    totalVelocidade: TotalVelocidade,
+    totalHoras: TotalHoras,
+    acesso: Acesso
+  };

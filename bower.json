@@ -1,0 +1,22 @@
+{
+  "name": "lunartech",
+  "description": "App para testes com Express",
+  "main": "app.js",
+  "authors": [
+    "Rodrigo Martins Silva"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/rodrigmars/lunartech",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.6.6",
+    "bootstrap": "v4.0.0-beta",
+    "angular-route": "1.6.6"
+  }
+}
