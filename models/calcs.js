@@ -1,18 +1,20 @@
-  function TotalVelocidade(valor) {
-    return null;
-  }
+'use strict';
 
-  function TotalHoras() {
-    return (150)
-  }
+function TotalVelocidade(valor) {
+  return null;
+}
 
-  function Acesso(profile) {
+function TotalHoras() {
+  return (150)
+}
 
-    return (profile.coordenadas == "A1521324") ? true : false;
-  }
+function Acesso(profile) {
 
-  module.exports = {
-    totalVelocidade: TotalVelocidade,
-    totalHoras: TotalHoras,
-    acesso: Acesso
-  };
+  return (profile.coordenadas == "A1521324") ? true : false;
+}
+
+module.exports = {
+  totalVelocidade: TotalVelocidade,
+  totalHoras: TotalHoras,
+  acesso: Acesso
+};

@@ -1,4 +1,5 @@
 (function() {
+  'use strict';
 
   angular.module('app').component('appHome', {
     templateUrl: "/app/views/home.html",
@@ -10,7 +11,7 @@
   function HomeCtrl() {
     var vm = this;
 
-    vm.title = "Pagina HOME";
+    vm.title = "Seja bem vindo a LunarTech";
 
   }
 
