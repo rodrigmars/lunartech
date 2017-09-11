@@ -1,0 +1,13 @@
+# ignore contents of node_modules
+node_modules/*
+
+# ignore contents assets
+# app/assets/css/*
+# app/assets/fonts/*
+
+# ignore contents libs
+# app/libs/angular/*
+# app/libs/angular-route/*
+# app/libs/bootstrap/*
+# app/libs/jquery/*
+# app/libs/popper.js/*
