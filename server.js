@@ -3,24 +3,29 @@ const express = require('express'),
   app = express(),
   mongoose = require('mongoose'),
   apiRoutes = require('./routes/estudantes'),
-  path = require('path');
+  path = require('path'),
+  logger = require('nodejslogger');
 
 mongoose.connection.openUri('mongodb://localhost:27017/lunartechdb')
   .once('open', function() {
 
-    console.log();
+    app.use(express.static("app"));
 
-    app.use(express.static(__dirname));
+    app.use('/', function(req, res, next) {
 
-    app.get('/*', function(req, res) {
-
-      res.sendFile('app/index.html', { root: __dirname });
+      res.sendFile('index.html', { root: path.join(__dirname, "app") }, function(err) {
+        if (err) {
+          logger.error("Erro:", err.stack);
+          // next(err);
+          res.status(500).json('Erro: ' + err);
+        }
+      });
     });
 
-  }).on('error', function(error) {
-    console.log('error', error);
+  }).on('error', function(error, res) {
+    logger.error('MongoDB event error: ' + error);
   });
 
 var server = app.listen(3000, function() {
-  console.log('App listening on port ', server.address().port);
+  logger.info('App listening on port ', server.address().port);
 });
