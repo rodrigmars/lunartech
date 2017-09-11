@@ -26,5 +26,10 @@ app.use('/', function(req, res, next) {
 });
 
 app.listen(port, function() {
+
+  logger.info(`PORTA: ${port}`);
+  logger.info(`ARQUIVO: ${file}`);
+  logger.info(`PATH: ${path}`);
   logger.info(`App listening on port port ${port}`);
+
 });
