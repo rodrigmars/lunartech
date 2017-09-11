@@ -5,7 +5,6 @@ const express = require('express'),
 
 
 router.get('/api/estudantes', function(req, res) {
-  console.log("chegou aqui>>>>>>>>>>>>>>>>>>>>>>>");
 
 
 

@@ -4,7 +4,8 @@ const express = require('express'),
   app = express(),
   logger = require('nodejslogger'),
   config = require('./config'),
-  apiRoutes = require('./routes/estudantes'),
+  bodyParser = require('body-parser'),
+  route = require('./routes/alunos'),
   {
     app: {
       port,
@@ -12,6 +13,13 @@ const express = require('express'),
       path
     },
   } = config;
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
+app.use('/api', route);
 
 app.use(express.static("app"));
 
