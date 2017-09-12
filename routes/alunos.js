@@ -7,7 +7,7 @@ const
   db = require('../db');
 
 // GET - Retorna lista de alunos
-router.get('/alunos', function(req, res, next) {
+router.get('api/alunos', function(req, res, next) {
 
   db.Alunos.find().then(function(doc) {
     req.status(200).json(doc);
@@ -18,7 +18,7 @@ router.get('/alunos', function(req, res, next) {
 });
 
 // GET - Retorna Aluna por Id
-router.get('/alunos/:id', function(req, res, next) {
+router.get('api/alunos/:id', function(req, res, next) {
 
   // db.Alunos.find()
   //   .exec(function(err, doc) {
@@ -32,7 +32,7 @@ router.get('/alunos/:id', function(req, res, next) {
   db.Alunos.findOne({ _id: req.params.id })
     .exec(function(err, doc) {
       if (err) {
-        req.status(200).send("Registro não localizado");
+        req.status(200).send(`${err}`);
       } else {
         console.debug(`${doc}`);
         req.status(200).json(doc);
@@ -57,7 +57,7 @@ router.get('/alunos/:id', function(req, res, next) {
 
 
 // POST - Cadastra novo aluno 
-router.post('/alunos', function(req, res, next) {
+router.post('api/alunos', function(req, res, next) {
 
   let aluno = new db.Alunos({
     nome: req.body.nome,
@@ -74,14 +74,12 @@ router.post('/alunos', function(req, res, next) {
 });
 
 // PUT - Atualiza aluno 
-router.put('/alunos/:id', function(req, res, next) {
-
-  console.debug(`req.body: ${req.body}`);
+router.put('api/alunos/:id', function(req, res, next) {
 
   db.Alunos.findById(req.body.id, function(err, aluno) {
-    if (err) {
-      console.error(`Registro não localizado - Error: ${err}`);
-    }
+
+    if (err) res.send(`${err}`);
+
     aluno.nome = req.body.nome;
     aluno.save();
     res.redirect('/');
@@ -89,13 +87,18 @@ router.put('/alunos/:id', function(req, res, next) {
 });
 
 // DELETE - Remove aluno
-router.delete('/alunos/:id', function(req, res, next) {
+router.delete('api/alunos/:id', function(req, res, next) {
 
-  console.debug(`Objeto Aluno: ${aluno}`);
+  db.Alunos.findOneAndRemove({ _id: req.body.id }, function(err, doc) {
 
-  db.Alunos.findByIdAndRemove(req.body.id).exec();
+    if (err) res.send(`${err}`);
 
-  res.redirect('/');
+    res.status(204).redirect('/');
+  });
+
+  // db.Alunos.findByIdAndRemove(req.body.id).exec();
+
+  // res.redirect('/');
 });
 
 module.exports = router;

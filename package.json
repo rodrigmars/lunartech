@@ -17,5 +17,10 @@
     "express": "^4.15.4",
     "mongoose": "^4.11.10",
     "nodejslogger": "^1.2.3"
+  },
+  "devDependencies": {
+    "css-loader": "^0.28.7",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.5.6"
   }
 }
